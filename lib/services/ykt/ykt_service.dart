@@ -6,8 +6,8 @@ import 'package:encrypt/encrypt.dart' as enc;
 /// 一卡通平台（ykt2025.caii.edu.cn）接口。
 ///
 /// 业务接口均为 AES-CBC 加密表单（密钥硬编码在平台 H5 前端 JS 里）：
-///   请求体: iv=<base64随机IV>&ciphertext=<base64(AES(JSON))>&r=<13位毫秒时间戳>
-///   明文:   {"uuid": "<用户UUID>"}（认证即 UUID，无 Cookie）
+/// - 请求体: `iv=<base64随机IV>&ciphertext=<base64(AES(JSON))>&r=<13位毫秒时间戳>`
+/// - 明文: `{"uuid": "<用户UUID>"}`（认证即 UUID，无 Cookie）
 class YktService {
   YktService();
 

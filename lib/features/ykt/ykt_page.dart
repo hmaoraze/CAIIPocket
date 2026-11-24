@@ -262,7 +262,7 @@ class _YktPageState extends State<YktPage> {
 
   Widget _userCard(ThemeData theme) {
     final user = _user!;
-    String row(String k, String v) => Padding(
+    Widget row(String k, String v) => Padding(
           padding: const EdgeInsets.symmetric(vertical: 4),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
