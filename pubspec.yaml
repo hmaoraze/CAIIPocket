@@ -1,0 +1,61 @@
+name: caii_pocket
+description: "校园门户助手：统一身份认证（CAS）+ 课表 + 专注 + 校园服务"
+publish_to: "none"
+version: 0.1.0+1
+
+environment:
+  sdk: ^3.9.0
+  flutter: ">=3.35.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  intl: any
+
+  # 架构：路由 + DI
+  flutter_modular: ^7.1.1
+
+  # 状态管理：MobX
+  mobx: ^2.7.0
+  flutter_mobx: ^2.4.0
+
+  # 存储
+  hive_ce: ^2.23.3
+  hive_ce_flutter: ^2.5.0
+
+  # 网络
+  dio: ^5.11.1
+  cookie_jar: ^4.0.9
+  dio_cookie_manager: ^3.5.0
+  encrypt: ^5.0.3
+
+  # UI
+  dynamic_color: ^2.1.0
+  skeletonizer: ^3.0.0
+  cached_network_image: ^4.0.7
+
+  # 平台能力
+  webview_flutter: ^4.14.1
+  mobile_scanner: ^7.5.0
+  # 只为相机授权：扫一扫需要运行时申请 CAMERA，扫码插件自己不申请
+  permission_handler: ^12.0.1
+  path_provider: ^2.1.6
+  package_info_plus: ^10.2.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+flutter:
+  uses-material-design: true
+
+  # 想用 MiSans（Kazumi 同款中文字体）时：把 MiSans-Regular.ttf 放到
+  # assets/fonts/ 下，取消下面注释，并在 core/theme/theme_provider.dart
+  # 里把 fontFamily 设为 'MiSans'。
+  # fonts:
+  #   - family: MiSans
+  #     fonts:
+  #       - asset: assets/fonts/MiSans-Regular.ttf
