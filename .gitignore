@@ -56,3 +56,4 @@ android/key.properties
 *.keystore
 
 # 工具生成的本地笔记.n.workbuddy-note
+android/build/
