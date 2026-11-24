@@ -20,7 +20,6 @@
 ## 支持平台
 
 - Android 10 及以上（[Releases 下载 APK](https://github.com/hmaoraze/CAIIPocket/releases/latest)）
-- iOS 13 及以上（需要 [侧载自签](https://github.com/hmaoraze/CAIIPocket/releases/latest)，下载 `no_sign.ipa` 后使用 AltStore / Sideloadly 等工具安装）
 
 ## 功能特性
 
@@ -46,7 +45,6 @@
 | 文件 | 说明 |
 | --- | --- |
 | `CAIIPocket_android_x.y.z.apk` | Android 安装包，直接安装 |
-| `CAIIPocket_ios_x.y.z_no_sign.ipa` | iOS 未签名包，需自签后安装 |
 
 > 发布 Release 时 GitHub Actions 会自动构建并附上安装包，无需手动打包。
 

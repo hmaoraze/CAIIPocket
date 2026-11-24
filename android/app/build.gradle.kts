@@ -95,10 +95,11 @@ dependencies {
     // 若文件缺失，引擎 init 会失败并回传 error 给 Flutter，回退 MLKit，不会崩溃。
 
     // CameraX：原生扫码预览 + YUV 帧分析（物理长焦直切需要 1.4+）
+    // 注意：Camera2Interop / ExperimentalCamera2Interop 等 interop 类都在
+    // camera-camera2 里（1.4.x 起不再有独立的 camera-camera2-interop 构件）
     val camerax = "1.4.2"
     implementation("androidx.camera:camera-core:$camerax")
     implementation("androidx.camera:camera-camera2:$camerax")
-    implementation("androidx.camera:camera-camera2-interop:$camerax")
     implementation("androidx.camera:camera-lifecycle:$camerax")
     implementation("androidx.camera:camera-view:$camerax")
 
