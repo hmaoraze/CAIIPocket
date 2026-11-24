@@ -1,4 +1,4 @@
-name: Release Build
+﻿name: Release Build
 
 # 仿 Kazumi 模式：推送 v* 标签时自动构建，
 # 构建完成后由 github-actions 机器人自动创建 Release 并挂载 APK / IPA。
@@ -28,7 +28,7 @@ jobs:
         uses: subosito/flutter-action@v2
         with:
           channel: stable
-          flutter-version: 3.35.0
+          flutter-version: 3.50.0
           cache: true
 
       - name: Pub get
@@ -87,7 +87,7 @@ jobs:
         uses: subosito/flutter-action@v2
         with:
           channel: stable
-          flutter-version: 3.35.0
+          flutter-version: 3.50.0
           cache: true
 
       - name: Pub get
