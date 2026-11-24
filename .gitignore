@@ -49,3 +49,8 @@ app.*.map.json
 
 # 构建产物目录
 /dist/
+
+# 正式签名密钥（严禁入库）
+android/key.properties
+*.jks
+*.keystore

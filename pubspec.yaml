@@ -1,7 +1,7 @@
 name: caii_pocket
 description: "校园门户助手：统一身份认证（CAS）+ 课表 + 专注 + 校园服务"
 publish_to: "none"
-version: 0.1.0+1
+version: 0.1.1+2
 
 environment:
   sdk: ^3.9.0
