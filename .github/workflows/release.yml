@@ -1,10 +1,11 @@
 name: Release Build
 
-# 发版时自动构建：只在 Release 发布（published）时触发，
-# 构建产物（APK / 未签名 IPA）自动挂到该 Release 的 Assets 下。
+# 仿 Kazumi 模式：推送 v* 标签时自动构建，
+# 构建完成后由 github-actions 机器人自动创建 Release 并挂载 APK / IPA。
 on:
-  release:
-    types: [published]
+  push:
+    tags:
+      - "v*"
   workflow_dispatch: {}
 
 permissions:
@@ -33,7 +34,7 @@ jobs:
       - name: Pub get
         run: flutter pub get
 
-      - name: Build APK (release, debug 签名)
+      - name: Build APK (release)
         run: flutter build apk --release
 
       - name: Read version from pubspec
@@ -47,15 +48,17 @@ jobs:
           mkdir -p dist
           cp build/app/outputs/flutter-apk/app-release.apk "dist/CAIIPocket_android_${{ steps.ver.outputs.version }}.apk"
 
-      - name: Upload APK to Release
+      - name: Upload APK to Release (不存在则由机器人自动创建)
         uses: softprops/action-gh-release@v2
         with:
+          tag_name: ${{ github.ref_name }}
+          name: CAIIPocket ${{ github.ref_name }}
+          generate_release_notes: true
           files: dist/CAIIPocket_android_*.apk
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        if: github.event_name == 'release'
 
-      - name: Upload artifact (workflow_dispatch 时)
+      - name: Upload artifact (手动触发时)
         uses: actions/upload-artifact@v4
         if: github.event_name == 'workflow_dispatch'
         with:
@@ -81,12 +84,9 @@ jobs:
       - name: Build IPA (no codesign)
         run: |
           flutter build ipa --release --no-codesign
-          # 未签名产物在 build/ios/archive 之外，直接从 xcarchive 提取 Payload
+          # 未签名产物直接从 xcarchive 提取 Payload 打包
           mkdir -p dist
           cp -r build/ios/archive/Runner.xcarchive/Products/Applications/Runner.app dist/Runner.app
-
-      - name: Pack unsigned IPA
-        run: |
           VERSION=$(grep '^version:' pubspec.yaml | cut -d' ' -f2 | cut -d'+' -f1)
           cd dist
           mkdir Payload
@@ -95,15 +95,17 @@ jobs:
           rm -rf Payload Runner.app
           cd ..
 
-      - name: Upload IPA to Release
+      - name: Upload IPA to Release (不存在则由机器人自动创建)
         uses: softprops/action-gh-release@v2
         with:
+          tag_name: ${{ github.ref_name }}
+          name: CAIIPocket ${{ github.ref_name }}
+          generate_release_notes: true
           files: dist/CAIIPocket_ios_*_no_sign.ipa
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        if: github.event_name == 'release'
 
-      - name: Upload artifact (workflow_dispatch 时)
+      - name: Upload artifact (手动触发时)
         uses: actions/upload-artifact@v4
         if: github.event_name == 'workflow_dispatch'
         with:
