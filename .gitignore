@@ -54,3 +54,5 @@ app.*.map.json
 android/key.properties
 *.jks
 *.keystore
+
+# 工具生成的本地笔记.n.workbuddy-note
