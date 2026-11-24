@@ -4,6 +4,7 @@ analyzer:
   exclude:
     - build/**
     - android/**
+    - ios/**
   errors:
     # Flutter 3.50 起 package:flutter/material.dart 整体被标记为"迁移到 material_ui"，
     # 这条全局 deprecation 会让每个文件的 import 都报 info；这里统一静音。
