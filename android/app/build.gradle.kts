@@ -81,10 +81,18 @@ flutter {
 }
 
 dependencies {
-    // 微信开源扫码引擎：OpenCV 官方 AAR（4.9+），含 wechat_qrcode 模块和
-    // Java API org.opencv.wechat_qrcode.WeChatQRCode。仓库兜底见根 build.gradle.kts
-    // 的 allprojects.repositories（aliyun -> google -> mavenCentral）。
-    implementation("org.opencv:opencv:4.11.0")
+    // 微信开源扫码引擎（WeChatCV/WeChatQRCode，jenly1314 封装的 Maven 构件）：
+    //   opencv        -> org.opencv.* Java 类，含 org.opencv.wechat_qrcode.WeChatQRCode
+    //   opencv-armv64 -> arm64-v8a 的 libopencv_java4.so（内含 wechat 检测 native 代码）
+    //   opencv-armv7a -> armeabi-v7a 同上
+    //   opencv-x86_64 -> x86_64 模拟器用
+    // 注意 1：官方 org.opencv:opencv 构件不含 wechat_qrcode 模块，不能替代。
+    // 注意 2：ABI 构件名是 opencv-armv64 / opencv-armv7a（带 v），
+    //         作者 README 里写的 opencv-arm64 是笔误，Maven Central 上不存在。
+    implementation("com.github.jenly1314.WeChatQRCode:opencv:2.6.0")
+    implementation("com.github.jenly1314.WeChatQRCode:opencv-armv64:2.6.0")
+    implementation("com.github.jenly1314.WeChatQRCode:opencv-armv7a:2.6.0")
+    implementation("com.github.jenly1314.WeChatQRCode:opencv-x86_64:2.6.0")
     //
     // wechat_qrcode 的 4 个模型文件放在 src/main/assets/opencv_wechat/：
     //   detect.prototxt / detect.caffemodel / sr.prototxt / sr.caffemodel

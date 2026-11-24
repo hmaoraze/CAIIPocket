@@ -46,7 +46,7 @@ object WeChatScanEngine {
         for (name in MODEL_FILES) {
             copyAssetIfNeeded(context, "$ASSET_DIR/$name", File(dir, name))
         }
-        detector = WeChatQRCode.create(
+        detector = WeChatQRCode(
             File(dir, "detect.prototxt").absolutePath,
             File(dir, "detect.caffemodel").absolutePath,
             File(dir, "sr.prototxt").absolutePath,
