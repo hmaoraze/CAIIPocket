@@ -64,8 +64,13 @@ object WeChatScanEngine {
     /** 识别一帧 BGR Mat 里的二维码，返回内容列表；引擎未就绪时返回空列表。 */
     fun detect(mat: Mat): List<String> {
         val d = detector ?: return emptyList()
-        val results = ArrayList<String>()
-        d.detectAndDecode(mat, results)
-        return results
+        // WeChatQRCode.detectAndDecode(Mat, List<Mat>)：第二个参数是「检测到的二维码位置框」
+        // （Mat 列表），解码出的字符串由返回值给出。
+        val points = ArrayList<Mat>()
+        return try {
+            d.detectAndDecode(mat, points) ?: emptyList()
+        } catch (t: Throwable) {
+            emptyList()
+        }
     }
 }
