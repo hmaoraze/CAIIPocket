@@ -4,7 +4,7 @@
 
 <img src="assets/images/logo.jpg" alt="CAIIPocket" width="200"/>
 
-**为长春汽车职业技术大学学生打造的第三方校园口袋 App**
+**为 CAII 学生打造的第三方校园口袋 App**
 
 [![Flutter](https://img.shields.io/badge/Flutter-3.35-02569B?style=flat&logo=flutter&logoColor=white)](https://flutter.dev)
 [![Dart](https://img.shields.io/badge/Dart-3.9-0175C2?style=flat&logo=dart&logoColor=white)](https://dart.dev)
@@ -61,7 +61,7 @@ flutter run
 
 ## 免责声明
 
-- 本项目为**第三方**校园工具，与长春汽车职业技术大学官方无关
+- 本项目为**第三方**校园工具，与 CAII 官方无关
 - 仅调用了学校向学生开放的网络接口，用于本人数据的便捷查询，不采集、不上传任何他人数据
 - 请勿将本项目用于任何违反校规或法律法规的用途
 
